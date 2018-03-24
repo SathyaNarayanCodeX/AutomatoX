@@ -22,7 +22,7 @@ jobs:
       TERM: dumb
 
     steps:
-      - checkout
+      - checkout: post: - cp -r licenses/. $ANDROID_HOME/licenses
 
 
       # Download and cache dependencies
@@ -32,9 +32,10 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle dependencies
       - run: sdkmanager --install "ndk-bundle"
       - run: yes | sdkmanager --licenses
+      - run: gradle dependencies
+
 
       - save_cache:
           paths:
@@ -43,6 +44,8 @@ jobs:
 
       # run testss!
       - run: gradle test
+
+
 
 
 
