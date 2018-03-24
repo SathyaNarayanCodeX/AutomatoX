@@ -43,12 +43,14 @@ import static com.mytaxi.android_demo.reusableComponents.CustomViewInteractions.
 
 import static com.mytaxi.android_demo.reusableComponents.CustomViewInteractions.verifyTextWithDescendant;
 import static com.mytaxi.android_demo.reusableComponents.CustomViewInteractions.verifyTextWithDescendantInputString;
+import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.isVisible;
 import static org.hamcrest.core.AllOf.allOf;
 
 public class LandingScreen {
 
     public LandingScreen() {
 
+        isVisible().matches(R.id.toolbar);
         verifyTextWithDescendant(R.id.toolbar, R.string.app_name);
 //        onView(allOf(withId(R.id.toolbar), hasDescendant(withText(R.string.app_name)))).check(matches(isDisplayed()));
 

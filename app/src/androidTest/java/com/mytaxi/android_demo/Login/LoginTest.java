@@ -7,33 +7,51 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.provider.ContactsContract;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingRegistry;
+import android.support.test.espresso.IdlingResource;
+import android.support.test.espresso.IdlingResource;
+import android.support.test.espresso.idling.CountingIdlingResource;
+import android.support.test.filters.LargeTest;
 import android.support.test.filters.SmallTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.mytaxi.android_demo.R;
 import com.mytaxi.android_demo.activities.AuthenticatedActivity;
 import com.mytaxi.android_demo.activities.AuthenticationActivity;
 import com.mytaxi.android_demo.activities.MainActivity;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingResource;
 
 import java.io.File;
 
 import static android.support.test.InstrumentationRegistry.getArguments;
 import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static com.mytaxi.android_demo.reusableComponents.DataFeeder.*;
+import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.clearSharedPreferences;
+import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.isVisible;
 import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.launchMainActivity;
 
 @RunWith(AndroidJUnit4.class)
-@SmallTest
+@LargeTest
 public class LoginTest {
+
+
+    private IdlingResource mIdlingResource;
 
     @Before
     public void setup() {
         launchMainActivity();
+
+
     }
 
     @Test
@@ -56,6 +74,13 @@ public class LoginTest {
         new LoginScreen()
                 .enterCredentials(EMPTY_USERNAME, EMPTY_PASSWORD)
                 .checkInvalidLoginErrorMessage();
+    }
+
+    @After
+    public void tearDown() {
+        if (mIdlingResource != null) {
+            Espresso.unregisterIdlingResources(mIdlingResource);
+        }
     }
 
 

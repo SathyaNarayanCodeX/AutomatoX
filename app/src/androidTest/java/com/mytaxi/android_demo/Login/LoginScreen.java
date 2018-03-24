@@ -47,7 +47,7 @@ public class LoginScreen {
 
     public LandingScreen tapLoginButton() throws InterruptedException {
         tapOnItemWithId(R.id.btn_login);
-        Thread.sleep(6000);
+//        Thread.sleep(2000);
         return new LandingScreen();
     }
 
