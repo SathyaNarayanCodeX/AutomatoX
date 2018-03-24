@@ -44,18 +44,6 @@ jobs:
                    parallel: true
 
 
-        - override:
-               - ./gradlew connectedAndroidTest -PdisablePreDex --stacktrace
-
-
-
-        - post:
-               - cp -r app/build/reports $CIRCLE_ARTIFACTS
-               - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-               - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
-               - mkdir $CIRCLE_TEST_REPORTS/junit
-               - find */build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-
       # run tests!
       - run: ./gradlew test
 
