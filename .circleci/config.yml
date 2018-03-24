@@ -42,18 +42,7 @@ jobs:
                - emulator -avd circleci-android22 -no-audio -no-window:
                    background: true
                    parallel: true
-               - circle-android wait-for-boot
-               - sleep 70
-               - adb shell input keyevent 82
 
-               - wget http://imgur.com/tools/imgurbash.sh
-               - chmod a+x imgurbash.sh
-               - adb shell screencap -p | sed 's/\r$//' > alua.png
-               - ./imgurbash.sh alua.png
-
-               - sleep 5
-               - fb-adb shell input touchscreen swipe 370 735 371 735
-               - sleep 5
 
         - override:
                - ./gradlew connectedAndroidTest -PdisablePreDex --stacktrace
@@ -66,6 +55,7 @@ jobs:
                - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
                - mkdir $CIRCLE_TEST_REPORTS/junit
                - find */build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+
       # run tests!
       - run: ./gradlew test
 
