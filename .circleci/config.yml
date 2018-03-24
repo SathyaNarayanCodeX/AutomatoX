@@ -38,13 +38,10 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - pre:
-               - emulator -avd circleci-android22 -no-audio -no-window:
-                   background: true
-                   parallel: true
+
 
 
       # run tests!
-      - run: ./gradlew test
+      - run: ./gradlew connectedcircleci-android22AndroidTest
 
 
