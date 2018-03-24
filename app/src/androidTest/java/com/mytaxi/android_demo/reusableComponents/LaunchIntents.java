@@ -27,9 +27,6 @@ public final class LaunchIntents {
 
     public static void launchMainActivity() {
         ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
-        private IdlingResource mIdlingResource = mActivityRule.getActivity().isActivityTransitionRunning();
-        // To prove that the test fails, omit this call:
-        Espresso.registerIdlingResources(mIdlingResource);
         Intent intent = new Intent(getTargetContext(), MainActivity.class);
         intent.setAction(Intent.ACTION_MAIN);
         clearSharedPreferences();
@@ -66,7 +63,6 @@ public final class LaunchIntents {
             }
         };
     }
-
 
 
 }

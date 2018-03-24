@@ -43,15 +43,9 @@ import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.launchMai
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class LoginTest {
-
-
-    private IdlingResource mIdlingResource;
-
     @Before
     public void setup() {
         launchMainActivity();
-
-
     }
 
     @Test
@@ -75,13 +69,4 @@ public class LoginTest {
                 .enterCredentials(EMPTY_USERNAME, EMPTY_PASSWORD)
                 .checkInvalidLoginErrorMessage();
     }
-
-    @After
-    public void tearDown() {
-        if (mIdlingResource != null) {
-            Espresso.unregisterIdlingResources(mIdlingResource);
-        }
-    }
-
-
 }
