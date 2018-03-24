@@ -67,7 +67,7 @@ public class LandingScreen {
     public LandingScreen enterTextInSearchDriverTextBox(String driverName) throws InterruptedException {
 //        onView(withId(R.id.textSearch)).check(matches(isDisplayed())).perform(typeText(driverName));
         sendKeysCloseKeyboard(R.id.textSearch, driverName);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         //onView(withId(R.id.textSearch)).check(matches(isDisplayed())).perform(typeText(" "), pressKey(KeyEvent.KEYCODE_DEL));
         return this;
     }

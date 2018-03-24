@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 /**
  * Instrumented test, which will execute on an Android device.
  *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * @see <a href="e">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
@@ -20,7 +20,7 @@ public class ExampleInstrumentedTest {
     public void useAppContext() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
-        appContext.deleteSharedPreferences("Delete");
+
 
         assertEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
