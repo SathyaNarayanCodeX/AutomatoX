@@ -23,16 +23,6 @@ jobs:
 
     steps:
       - checkout
-      - run:
-                name: Save test results
-                command: |
-                  mkdir -p ~/junit/
-                  find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/junit/ \;
-                when: always
-            - store_test_results:
-                path: ~/junit
-            - store_artifacts:
-                path: ~/junit
 
       # Download and cache dependencies
       - restore_cache:
@@ -48,6 +38,34 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
+      pre:
+               - emulator -avd circleci-android22 -no-audio -no-window:
+                   background: true
+                   parallel: true
+               - circle-android wait-for-boot
+               - sleep 70
+               - adb shell input keyevent 82
+
+               - wget http://imgur.com/tools/imgurbash.sh
+               - chmod a+x imgurbash.sh
+               - adb shell screencap -p | sed 's/\r$//' > alua.png
+               - ./imgurbash.sh alua.png
+
+               - sleep 5
+               - fb-adb shell input touchscreen swipe 370 735 371 735
+               - sleep 5
+
+          override:
+               - ./gradlew connectedAndroidTest -PdisablePreDex --stacktrace
+
+
+
+          post:
+               - cp -r app/build/reports $CIRCLE_ARTIFACTS
+               - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+               - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+               - mkdir $CIRCLE_TEST_REPORTS/junit
+               - find */build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
       # run tests!
       - run: ./gradlew test
 
