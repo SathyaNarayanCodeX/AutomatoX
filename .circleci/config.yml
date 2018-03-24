@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - checkout
-      -  post: - cp -r licenses/. $ANDROID_HOME/licenses
+      post: - cp -r licenses/. $ANDROID_HOME/licenses
 
       # Download and cache dependencies
       - restore_cache:
