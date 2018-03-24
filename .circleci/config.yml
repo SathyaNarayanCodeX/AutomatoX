@@ -5,25 +5,14 @@
 version: 2
 jobs:
   build:
-
-    machine:
-      environment:
-        PATH: "~/$AutomatoX/gradle-3.0/bin:$PATH"
-        TERM: "dumb"
-        ADB_INSTALL_TIMEOUT: "10"
-        GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+    docker:
       # specify the version you desire here
-      #- image: circleci/android:api-26-alpha
+      - image: circleci/openjdk:8-jdk
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
-    dependencies:
-    pre:
-    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-26
-    - echo y | android update sdk --no-ui --all --filter build-tools-26.0.1
-
 
     working_directory: ~/repo
 
@@ -33,9 +22,7 @@ jobs:
       TERM: dumb
 
     steps:
-      - checkout:
-
-
+      - checkout
 
       # Download and cache dependencies
       - restore_cache:
@@ -44,20 +31,15 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: sdkmanager --install "ndk-bundle"
-      - run: yes | sdkmanager --licenses
       - run: gradle dependencies
-
 
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run testss!
+      # run tests!
       - run: gradle test
-
-
 
 
 
