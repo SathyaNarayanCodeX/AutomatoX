@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/android:api-26-node8-alpha
+      - image: circleci/android:api-26-alpha
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - checkout:
-        post: - cp -r licenses/. $ANDROID_HOME/licenses
+      - post: - cp -r licenses/. $ANDROID_HOME/licenses
 
 
       # Download and cache dependencies
