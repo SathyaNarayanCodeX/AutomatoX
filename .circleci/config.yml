@@ -59,11 +59,11 @@ jobs:
           command: ./gradlew :app:connectedAndroidTest -PdisablePreDex
 
       - store_artifacts:
-          path: home/circleci/repo/app/build/reports/androidTests/connected
+          path: app/build/reports
           destination: reports
 
       - store_test_results:
-          path: home/circleci/repo/app/build/reports/androidTests/connected
+          path: app/build/reports
     test:
       post:
         - mkdir -p $CIRCLE_TEST_REPORTS/junit/
