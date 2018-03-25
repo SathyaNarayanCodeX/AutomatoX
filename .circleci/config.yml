@@ -64,4 +64,4 @@ jobs:
 
       - store_test_results:
 #          path: app/build/reports/androidTests
-           path: app/build/reports
+           path: app/build/test-results
