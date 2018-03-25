@@ -37,7 +37,6 @@ import static android.support.test.InstrumentationRegistry.getArguments;
 import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static com.mytaxi.android_demo.reusableComponents.DataFeeder.*;
 import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.clearSharedPreferences;
-import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.isVisible;
 import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.launchMainActivity;
 
 @RunWith(AndroidJUnit4.class)

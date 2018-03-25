@@ -56,7 +56,7 @@ jobs:
             adb shell input keyevent 82
       - run:
           name: Run Tests
-          command: ./gradlew connectedAndroidTest
+          command: ./gradlew :app:connectedAndroidTest -PdisablePreDex
 
       - store_artifacts:
           path: home/circleci/repo/app/build/reports/androidTests/connected

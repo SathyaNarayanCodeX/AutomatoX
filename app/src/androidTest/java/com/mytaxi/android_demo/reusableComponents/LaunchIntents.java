@@ -50,19 +50,7 @@ public final class LaunchIntents {
         }
     }
 
-    public static TypeSafeMatcher<View> isVisible() {
-        return new TypeSafeMatcher<View>() {
-            @Override
-            protected boolean matchesSafely(View item) {
-                return item.getVisibility() == View.VISIBLE;
-            }
 
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("is VISIBLE");
-            }
-        };
-    }
 
 
 }
