@@ -24,6 +24,7 @@ import com.mytaxi.android_demo.activities.MainActivity;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,6 +49,7 @@ public class LoginTest {
     }
 
     @Test
+    @Ignore
     public void validLogin() throws InterruptedException {
         new LoginScreen()
                 .enterCredentials(VALID_USERNAME, VALID_PASSWORD)
@@ -56,6 +58,7 @@ public class LoginTest {
     }
 
     @Test
+    @Ignore
     public void invalidLoginVerifyErrorMessage() throws Exception {
         new LoginScreen()
                 .enterCredentials(INVALID_USERNAME, INVALID_PASSWORD)
@@ -70,6 +73,7 @@ public class LoginTest {
     }
 
     @Test
+    @Ignore
     public void logout() throws InterruptedException {
         new LoginScreen()
                 .enterCredentials(VALID_USERNAME, VALID_PASSWORD)

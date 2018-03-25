@@ -30,6 +30,7 @@ public class LandingTest {
 
 
     @Test
+    @Ignore
     public void searchDriver() throws InterruptedException {
         new LoginTest()
                 .validLogin();
@@ -41,6 +42,7 @@ public class LandingTest {
     }
 
     @Test
+    @Ignore
     public void searchDriverTapCallIcon() throws InterruptedException {
 
         new LoginTest()
