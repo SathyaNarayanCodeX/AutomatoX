@@ -5,10 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.IdlingResource;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
+import com.mytaxi.android_demo.R;
 import com.mytaxi.android_demo.activities.MainActivity;
 
 import org.hamcrest.Description;
@@ -16,8 +19,10 @@ import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static android.support.test.InstrumentationRegistry.getTargetContext;
+import static android.support.test.espresso.action.ViewActions.click;
 
 public final class LaunchIntents {
     private LaunchIntents() {
@@ -49,8 +54,6 @@ public final class LaunchIntents {
                     .commit();
         }
     }
-
-
 
 
 }

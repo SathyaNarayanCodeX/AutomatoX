@@ -41,7 +41,6 @@ import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.clearShar
 import static com.mytaxi.android_demo.reusableComponents.LaunchIntents.launchMainActivity;
 
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 public class LoginTest {
     @Before
     public void setup() {
@@ -49,7 +48,6 @@ public class LoginTest {
     }
 
     @Test
-    @Ignore
     public void validLogin() throws InterruptedException {
         new LoginScreen()
                 .enterCredentials(VALID_USERNAME, VALID_PASSWORD)
@@ -58,7 +56,6 @@ public class LoginTest {
     }
 
     @Test
-    @Ignore
     public void invalidLoginVerifyErrorMessage() throws Exception {
         new LoginScreen()
                 .enterCredentials(INVALID_USERNAME, INVALID_PASSWORD)
@@ -73,7 +70,6 @@ public class LoginTest {
     }
 
     @Test
-    @Ignore
     public void logout() throws InterruptedException {
         new LoginScreen()
                 .enterCredentials(VALID_USERNAME, VALID_PASSWORD)

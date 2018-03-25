@@ -30,7 +30,6 @@ public class LandingTest {
 
 
     @Test
-    @Ignore
     public void searchDriver() throws InterruptedException {
         new LoginTest()
                 .validLogin();
@@ -42,9 +41,7 @@ public class LandingTest {
     }
 
     @Test
-    @Ignore
     public void searchDriverTapCallIcon() throws InterruptedException {
-
         new LoginTest()
                 .validLogin();
         new LandingScreen()
@@ -52,7 +49,6 @@ public class LandingTest {
                 .selectDriverFromPopUP(DRIVER_FULL_NAME)
                 .verifyDriver(DRIVER_FULL_NAME, DRIVER_LOCATION, DRIVER_DATE)
                 .tapOnCallIcon();
-
     }
 
 }

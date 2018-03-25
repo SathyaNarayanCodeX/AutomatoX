@@ -4,6 +4,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -38,6 +40,7 @@ import com.mytaxi.android_demo.utils.network.HttpClient;
 import com.mytaxi.android_demo.utils.storage.SharedPrefStorage;
 
 import javax.inject.Inject;
+
 
 import static com.mytaxi.android_demo.misc.Constants.DEFAULT_LOCATION;
 import static com.mytaxi.android_demo.misc.Constants.DEFAULT_ZOOM;
@@ -185,7 +188,7 @@ public class MainActivity extends AuthenticatedActivity
                 mLastKnownLocation = null;
                 mPermissionHelper.getLocationPermission(this);
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -213,7 +216,7 @@ public class MainActivity extends AuthenticatedActivity
                     }
                 });
             }
-        } catch(SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -246,5 +249,6 @@ public class MainActivity extends AuthenticatedActivity
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
         }
     }
+
 
 }
