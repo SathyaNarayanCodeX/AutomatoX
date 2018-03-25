@@ -56,7 +56,8 @@ public class LandingScreen {
     public LandingScreen verifyUserInLandingScreen(String username) {
         verifyTextWithDescendant(R.id.toolbar, R.string.app_name);
         onView(allOf(withContentDescription(R.string.navigation_drawer_open))).perform(click());
-        onView(allOf(withId(R.id.nav_username), (withText(username)))).check(matches(isDisplayed()));
+        verifyTextWithInputString(R.id.nav_username, username);
+//        onView(allOf(withId(R.id.nav_username), (withText(username)))).check(matches(isDisplayed()));
         tapOnNativeBackButton();
         return this;
     }
@@ -81,12 +82,10 @@ public class LandingScreen {
     }
 
     public LandingScreen verifyDriver(String driverFullName, String location, String driverDate) {
-
-        onView(allOf(withId(R.id.textViewDriverName), withText(driverFullName))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.textViewDriverLocation), withText(location))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.textViewDriverDate), withText(driverDate))).check(matches(isDisplayed()));
+        verifyTextWithInputString(R.id.textViewDriverName, driverFullName);
+        verifyTextWithInputString(R.id.textViewDriverLocation, location);
+        verifyTextWithInputString(R.id.textViewDriverDate, driverDate);
         return this;
-
     }
 
     public LandingScreen tapOnCallIcon() {
@@ -94,7 +93,7 @@ public class LandingScreen {
         return this;
     }
 
-    public LoginScreen logout(){
+    public LoginScreen logout() {
         onView(allOf(withContentDescription(R.string.navigation_drawer_open))).perform(click());
         tapOnItemWithText(R.string.text_item_title_logout);
         return new LoginScreen();

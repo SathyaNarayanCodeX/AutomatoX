@@ -36,9 +36,14 @@ public final class CustomViewInteractions {
         return onView(withId(itemName)).check(matches(isDisplayed())).perform(click());
     }
 
-    public static ViewInteraction verifyText(int itemNameWithId, int textToVerify) {
+    public static ViewInteraction verifyText(int itemNameWithId, @StringRes int textToVerify) {
         return onView(allOf(withId(itemNameWithId), withText(textToVerify))).check(matches(isDisplayed()));
     }
+
+    public static ViewInteraction verifyTextWithInputString(int itemNameWithId, String textToVerify) {
+        return onView(allOf(withId(itemNameWithId), withText(textToVerify))).check(matches(isDisplayed()));
+    }
+
     public static ViewInteraction verifyTextWithDescendant(int itemNameWithId, int textToVerify) {
         return onView(allOf(withId(itemNameWithId), hasDescendant(withText(textToVerify)))).check(matches(isDisplayed()));
     }
