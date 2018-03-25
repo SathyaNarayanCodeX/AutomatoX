@@ -56,7 +56,6 @@ jobs:
             adb shell input keyevent 82
       - run:
           name: Run Tests
-#          command: ./gradlew :app:connectedAndroidTest
           command: ./gradlew :app:connectedAndroidTest
 
       - store_artifacts:
@@ -65,7 +64,7 @@ jobs:
 
       - store_test_results:
           path: app/build/reports
-    test:
-      post:
-        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-        - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+#    test:
+#      post:
+#        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+#        - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
