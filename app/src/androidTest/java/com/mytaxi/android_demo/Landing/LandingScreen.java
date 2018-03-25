@@ -52,8 +52,6 @@ public class LandingScreen {
 
         isVisible().matches(R.id.toolbar);
         verifyTextWithDescendant(R.id.toolbar, R.string.app_name);
-//        onView(allOf(withId(R.id.toolbar), hasDescendant(withText(R.string.app_name)))).check(matches(isDisplayed()));
-
     }
 
     public LandingScreen verifyUserInLandingScreen(String username) {
