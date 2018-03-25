@@ -59,11 +59,11 @@ jobs:
           command: ./gradlew connectedAndroidTest
 
       - store_artifacts:
-          path: app/build/androidTests/test-results
+          path: home/circleci/repo/app/build/reports/androidTests/connected
           destination: reports
 
       - store_test_results:
-          path: app/build/androidTests/test-results
+          path: home/circleci/repo/app/build/reports/androidTests/connected
     test:
       post:
         - mkdir -p $CIRCLE_TEST_REPORTS/junit/
