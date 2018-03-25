@@ -63,7 +63,7 @@ jobs:
           destination: reports
 
       - store_test_results:
-          path: app/build/test-results/testDebugUnitTest
+          path: app/build/test-results/testDebugUnitTest/TEST-com.mytaxi.android_demo.ExampleUnitTest.xml
       - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
 #          path: app/build/reports/androidTests
 
