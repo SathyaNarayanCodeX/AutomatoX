@@ -8,6 +8,7 @@ import android.support.test.espresso.matcher.RootMatchers;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.view.KeyEvent;
 
+import com.mytaxi.android_demo.Login.LoginScreen;
 import com.mytaxi.android_demo.R;
 import com.mytaxi.android_demo.activities.MainActivity;
 
@@ -61,7 +62,6 @@ public class LandingScreen {
     }
 
     public LandingScreen enterTextInSearchDriverTextBox(String driverName) throws InterruptedException {
-//        onView(withId(R.id.textSearch)).check(matches(isDisplayed())).perform(typeText(driverName));
         sendKeysCloseKeyboard(R.id.textSearch, driverName);
         Thread.sleep(3000);
         //onView(withId(R.id.textSearch)).check(matches(isDisplayed())).perform(typeText(" "), pressKey(KeyEvent.KEYCODE_DEL));
@@ -92,6 +92,12 @@ public class LandingScreen {
     public LandingScreen tapOnCallIcon() {
         tapOnItemWithId(R.id.fab);
         return this;
+    }
+
+    public LoginScreen logout(){
+        onView(allOf(withContentDescription(R.string.navigation_drawer_open))).perform(click());
+        tapOnItemWithText(R.string.text_item_title_logout);
+        return new LoginScreen();
     }
 
     public static Matcher<Root> isPopupWindow() {

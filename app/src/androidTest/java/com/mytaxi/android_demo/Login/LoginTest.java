@@ -68,4 +68,13 @@ public class LoginTest {
                 .enterCredentials(EMPTY_USERNAME, EMPTY_PASSWORD)
                 .checkInvalidLoginErrorMessage();
     }
+
+    @Test
+    public void logout() throws InterruptedException {
+        new LoginScreen()
+                .enterCredentials(VALID_USERNAME, VALID_PASSWORD)
+                .tapLoginButton()
+                .verifyUserInLandingScreen(VALID_USERNAME)
+                .logout();
+    }
 }

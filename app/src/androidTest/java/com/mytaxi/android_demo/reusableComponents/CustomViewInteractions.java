@@ -24,7 +24,7 @@ public final class CustomViewInteractions {
         // no instances
     }
 
-    public static ViewInteraction clickOnItem(@StringRes int textResourceId) {
+    public static ViewInteraction tapOnItemWithText(@StringRes int textResourceId) {
         return onView(withText(textResourceId)).perform(click());
     }
 
