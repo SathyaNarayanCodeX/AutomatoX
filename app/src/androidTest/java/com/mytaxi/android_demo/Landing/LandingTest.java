@@ -50,5 +50,4 @@ public class LandingTest {
                 .verifyDriver(DRIVER_FULL_NAME, DRIVER_LOCATION, DRIVER_DATE)
                 .tapOnCallIcon();
     }
-
 }
