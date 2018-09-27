@@ -51,4 +51,14 @@ public class LandingTest {
                 .tapOnCallIcon();
     }
 
+    @Test
+    public void searchDriverTapCallIconAgain() throws InterruptedException {
+        new LoginTest()
+                .validLogin();
+        new LandingScreen()
+                .enterTextInSearchDriverTextBox(DRIVER_NAME_KEYWORD_SEARCH)
+                .selectDriverFromPopUP(DRIVER_FULL_NAME)
+                .verifyDriver(DRIVER_FULL_NAME, DRIVER_LOCATION, DRIVER_DATE)
+                .tapOnCallIcon();
+    }
 }
